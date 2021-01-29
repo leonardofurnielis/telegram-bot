@@ -23,6 +23,7 @@
     "helmet": "4.4.1",
     "ibm-watson": "6.0.2",
     "log4js": "6.3.0",
+    "node-cache": "5.1.2",
     "node-error-handler": "1.1.15",
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
