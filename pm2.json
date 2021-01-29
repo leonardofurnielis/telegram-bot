@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "telegram-bot-sentiment",
+      "script": "app.js",
+      "exec_mode": "fork"
+    }
+  ]
+}
