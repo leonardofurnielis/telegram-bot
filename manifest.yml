@@ -1,0 +1,9 @@
+applications:
+  - path: .
+    name: 'telegram-bot-sentiment'
+    host: 'telegram-bot-sentiment'
+    memory: 256M
+    instances: 1
+    domain: mybluemix.net
+    disk_quota: 1G
+    command: npm start
