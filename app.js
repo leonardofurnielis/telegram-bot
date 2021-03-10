@@ -1,10 +1,28 @@
 'use strict';
 
-const express = require('express');
+const http = require('http');
 
-const server = require('./config');
+const app = require('./config');
 
-const app = express();
+console.info(`Port: ${process.env.PORT || 3000}`);
+console.info(`NODE_ENV: ${process.env.NODE_ENV || 'local'}`);
+console.info(`Logger Level: ${process.env.LOGGER_LEVEL}`);
 
-server.create(app);
-server.listen(app);
+const server = http.createServer(app);
+
+server.on('clientError', (err) => {
+  console.error(err);
+});
+
+server.listen(Number(process.env.PORT || 3000), '0.0.0.0', () => {
+  console.info(
+    `REST server running on: http://${server.address().address}:${process.env.PORT || 3000}`
+  );
+
+  // console.info(
+  //   `OpenAPI-UI is running on: http://${server.address().address}:${
+  //     process.env.PORT || 3000
+  //   }/explorer`
+  // );
+  console.info('To shut down, press <CTRL> + C at any time.');
+});
