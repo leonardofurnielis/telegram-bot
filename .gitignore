@@ -18,5 +18,5 @@ dist/
 .vscode/
 
 # Environment
-!/config/env/.env_example
 /config/env/*
+!/config/env/.env_example
