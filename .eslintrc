@@ -6,8 +6,8 @@
   // reference page on eslint.org.
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier"],
+  "extends": ["airbnb", "prettier", "plugin:jest/style"],
+  "plugins": ["prettier", "jest"],
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
@@ -18,7 +18,8 @@
   "env": {
     "node": true,
     "es6": true,
-    "jest": true
+    "jest": true,
+    "jest/globals": true
   },
   "globals": {},
   "rules": {
