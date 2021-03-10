@@ -1,8 +1,15 @@
 {
+  //   ╔═╗╔═╗╦  ╦╔╗╔╔╦╗┬─┐┌─┐
+  //   ║╣ ╚═╗║  ║║║║ ║ ├┬┘│
+  //  o╚═╝╚═╝╩═╝╩╝╚╝ ╩ ┴└─└─┘
+  // For more information about any of the rules below, check out the relevant
+  // reference page on eslint.org.
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   "extends": ["airbnb", "prettier"],
   "plugins": ["prettier"],
   "parserOptions": {
-    "ecmaVersion": 2017,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -13,15 +20,16 @@
     "es6": true,
     "jest": true
   },
+  "globals": {},
   "rules": {
     "prettier/prettier": ["error"],
-    "no-underscore-dangle": ["error", { "allow": ["_id", "_rev", "_update"] }],
+    "no-underscore-dangle": ["error", { "allow": ["_id", "_rev"] }],
+    "no-use-before-define": ["error", { "functions": false }],
     "no-async-promise-executor": "off",
     "no-param-reassign": "off",
     "consistent-return": "off",
     "no-plusplus": "off",
     "no-console": "off",
-    "camelcase":"off",
     "strict": "off"
   }
 }

@@ -17,5 +17,6 @@ dist/
 .DS_Store
 .vscode/
 
-#
-/server/boot/env/.env
+# Environment
+!/config/env/.env_example
+/config/env/*

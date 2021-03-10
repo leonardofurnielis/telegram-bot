@@ -2,12 +2,9 @@
 
 const express = require('express');
 
-const server = require('./server');
+const server = require('./config');
 
-async function start_server() {
-  const app = express();
+const app = express();
 
-  server.listen(app);
-}
-
-start_server();
+server.create(app);
+server.listen(app);
