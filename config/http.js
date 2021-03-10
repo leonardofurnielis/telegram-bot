@@ -7,7 +7,7 @@ const compression = require('compression');
 const passport = require('passport');
 const rateLimit = require('express-rate-limit');
 
-const TransactionId = require('./middlewares/transaction-id');
+const transactionId = require('./middlewares/transaction-id');
 
 module.exports = async (app) => {
   app.set('trust proxy', 1);
@@ -26,5 +26,5 @@ module.exports = async (app) => {
   app.use(limiter);
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(TransactionId());
+  app.use(transactionId());
 };
