@@ -6,8 +6,9 @@
   "scripts": {
     "start": "./node_modules/.bin/pm2-runtime pm2.yaml",
     "dev": "nodemon app.js",
-    "lint": "eslint **/*.js",
-    "test": "jest --coverage --verbose"
+    "lint": "eslint .",
+    "test": "npm run lint && jest --coverage --verbose",
+    "precommit": "pretty-quick --staged"
   },
   "engines": {
     "node": "14.x"
@@ -25,7 +26,7 @@
     "ibm-watson": "6.0.3",
     "log4js": "6.3.0",
     "node-cache": "5.1.2",
-    "node-error-handler": "1.1.15",
+    "node-error-handler": "1.2.0",
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
     "pm2": "4.5.5",
@@ -36,15 +37,12 @@
   "devDependencies": {
     "codecov": "3.7.2",
     "eslint": "7.21.0",
-    "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "8.1.0",
-    "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jest": "24.2.1",
-    "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-prettier": "3.3.1",
-    "eslint-plugin-react": "7.22.0",
     "jest": "26.6.3",
     "prettier": "2.2.1",
+    "pretty-quick": "3.1.0",
     "supertest": "6.1.3"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier", "plugin:jest/style"],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "plugin:jest/style"],
   "plugins": ["prettier", "jest"],
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -16,14 +16,10 @@
   },
   "globals": {},
   "rules": {
+    "prefer-arrow-callback": "error",
     "prettier/prettier": ["error"],
-    "no-underscore-dangle": ["error", { "allow": ["_id", "_rev"] }],
     "no-use-before-define": ["error", { "functions": false }],
     "no-async-promise-executor": "off",
-    "no-param-reassign": "off",
-    "consistent-return": "off",
-    "no-plusplus": "off",
-    "no-console": "off",
-    "strict": "off"
+    "no-console": "off"
   }
 }
