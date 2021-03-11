@@ -4,7 +4,7 @@ const request = require('supertest');
 const app = require('../../../../config');
 
 describe('GET /api/liveness', () => {
-  test('Should return 200', () => {
+  test('When called, should return 200', () => {
     request(app)
       .get('/api/liveness')
       .then((response) => {
@@ -12,7 +12,7 @@ describe('GET /api/liveness', () => {
       });
   });
 
-  test('Should have all keys', () => {
+  test('When called, should have all keys', () => {
     request(app)
       .get('/api/liveness')
       .then((response) => {

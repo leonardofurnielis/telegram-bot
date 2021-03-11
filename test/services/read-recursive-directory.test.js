@@ -2,13 +2,13 @@
 
 const readRecursiveDirectory = require('../../services/read-recursive-directory');
 
-describe('[Function] readRecursiveDirectory', () => {
-  test('Should return a list of config directory files', () => {
+describe('Read Recursive Directory', () => {
+  test('When called, should return a list directory files', () => {
     const fileList = readRecursiveDirectory('/config');
     expect(fileList).toHaveLength(10);
   });
 
-  test('Should return error ENOENT', () => {
+  test('When dicrectory not found, should return error ENOENT', () => {
     let thrownError;
     try {
       readRecursiveDirectory('/foo');
