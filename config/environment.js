@@ -9,7 +9,7 @@ module.exports = async () => {
   });
 
   if (result.error) {
-    console.error(
+    console.debug(
       `Failed to load environment variables. Please check that the /env/.${
         process.env.NODE_ENV || 'env'
       } file exists.`
