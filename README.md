@@ -1,6 +1,7 @@
 # telegram-bot-sentiment
 
 [![Build Status](https://travis-ci.org/leonardofurnielis/telegram-bot-sentiment.svg?branch=master)](https://travis-ci.org/leonardofurnielis/telegram-bot-sentiment)
+[![codecov](https://codecov.io/gh/leonardofurnielis/telegram-bot-sentiment/branch/master/graph/badge.svg?token=deQmKPNEIY)](https://codecov.io/gh/leonardofurnielis/telegram-bot-sentiment)
 
 ## Table of Contents
 
