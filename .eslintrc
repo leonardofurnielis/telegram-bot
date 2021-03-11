@@ -1,11 +1,4 @@
 {
-  //   ╔═╗╔═╗╦  ╦╔╗╔╔╦╗┬─┐┌─┐
-  //   ║╣ ╚═╗║  ║║║║ ║ ├┬┘│
-  //  o╚═╝╚═╝╩═╝╩╝╚╝ ╩ ┴└─└─┘
-  // For more information about any of the rules below, check out the relevant
-  // reference page on eslint.org.
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   "extends": ["airbnb", "prettier", "plugin:jest/style"],
   "plugins": ["prettier", "jest"],
   "parserOptions": {
