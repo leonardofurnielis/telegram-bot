@@ -22,7 +22,7 @@ server.listen(Number(process.env.PORT || 3000), '0.0.0.0', () => {
   // console.info(
   //   `OpenAPI-UI is running on: http://${server.address().address}:${
   //     process.env.PORT || 3000
-  //   }/explorer`
+  //   }/docs`
   // );
   console.info('To shut down, press <CTRL> + C at any time.');
 });
