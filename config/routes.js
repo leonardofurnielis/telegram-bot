@@ -25,7 +25,7 @@ const routesLoader = (app) => {
   console.info(`Routes successfully loaded`);
 
   // Expose API openAPI documentation
-  // app.use('/explorer', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  // app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
   // 404 handler
   app.use((req, res, next) => {
