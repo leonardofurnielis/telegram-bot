@@ -5,7 +5,7 @@
 const path = require('path');
 const errorHandler = require('node-error-handler');
 
-const readRecursiveDirectory = require('../services/read-recursive-directory');
+const readRecursiveDirectory = require('../libraries/read-recursive-directory');
 
 // const swaggerUi = require('swagger-ui-express');
 // const swaggerDocument = require('swagger.json');
