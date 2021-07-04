@@ -5,19 +5,19 @@
 const path = require('path');
 const errorHandler = require('node-error-handler');
 
-const readRecursiveDirectory = require('../libraries/read-recursive-directory');
+const readRecursiveDirectory = require('../lib/read-recursive-directory');
 
 // const swaggerUi = require('swagger-ui-express');
 // const swaggerDocument = require('swagger.json');
 
 const routesLoader = (app) => {
-  const fileList = readRecursiveDirectory('/app/api');
+  const fileList = readRecursiveDirectory('/src/api');
 
   fileList
     .filter((f) => f.includes('index.js'))
     .forEach((file) => {
       const routeFile = require(path.join(process.cwd(), file));
-      const fn = file.replace('/app/api/', '').replace('index.js', '');
+      const fn = file.replace('/src/api/', '').replace('index.js', '');
 
       app.use(`/api/${fn}`, routeFile());
     });

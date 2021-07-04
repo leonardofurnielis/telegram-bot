@@ -1,11 +1,11 @@
 'use strict';
 
-const readRecursiveDirectory = require('../../services/read-recursive-directory');
+const readRecursiveDirectory = require('../../lib/read-recursive-directory');
 
 describe('Read Recursive Directory', () => {
   test('When called, should return a list directory files', () => {
     const fileList = readRecursiveDirectory('/config');
-    expect(fileList).toHaveLength(9);
+    expect(fileList).toHaveLength(10);
   });
 
   test('When dicrectory not found, should return error ENOENT', () => {
