@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "./node_modules/.bin/pm2-runtime pm2.yaml",
+    "start": "./node_modules/.bin/pm2-runtime pm2.yml",
     "dev": "nodemon app.js",
     "lint": "eslint .",
     "test": "npm run lint && jest --coverage --verbose",
