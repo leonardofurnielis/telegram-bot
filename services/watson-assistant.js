@@ -14,14 +14,6 @@ module.exports = {
         serviceUrl: 'https://api.us-south.assistant.watson.cloud.ibm.com',
       });
 
-      const ctx = {
-        skills: {
-          'main skill': {
-            user_defined: params.context || {},
-          },
-        },
-      };
-
       assistant
         .messageStateless({
           assistantId: process.env.ASSISTANT_ID,
@@ -29,7 +21,7 @@ module.exports = {
             message_type: 'text',
             text: params.text,
           },
-          context: ctx,
+          context: params.context || {},
         })
         .then((res) => {
           resolve(res.result);
