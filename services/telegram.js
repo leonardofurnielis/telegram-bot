@@ -12,7 +12,10 @@ function MessageBroker(message) {
     try {
       const chatId = message.chat.id;
 
-      const context = localCache.get(chatId) || {};
+      const fullContext = localCache.get(chatId) || {
+        skills: { 'main skill': { user_defined: {} } },
+      };
+      const context = fullContext.skills['main skill'].user_defined;
 
       const nluResponse = await nlu.analyze({ text: message.text });
 
@@ -21,14 +24,17 @@ function MessageBroker(message) {
       context.first_name = message.chat.first_name;
       console.debug('Sentiment:', nluResponse.sentiment.document.label);
 
+      fullContext.skills['main skill'].user_defined = context;
       const watsonResponse = await watsonAssistant.message({
         text: message.text,
         id: chatId,
-        context,
+        context: fullContext,
       });
 
       console.debug('Watson Assistant output:', watsonResponse.output.generic);
-      localCache.set(chatId, watsonResponse.output);
+
+      localCache.set(chatId, watsonResponse.context);
+
       resolve(watsonResponse.output.generic);
     } catch (err) {
       reject(err);
