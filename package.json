@@ -26,7 +26,7 @@
     "ibm-watson": "6.1.1",
     "log4js": "6.3.0",
     "node-cache": "5.1.2",
-    "node-error-handler": "1.2.1",
+    "node-error-handler": "1.2.2",
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
     "pm2": "5.1.0",
