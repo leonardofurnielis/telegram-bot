@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 
 module.exports = async () => {
   const result = dotenv.config({
-     path: path.join(__dirname, `./env/.env`),
+    path: path.join(__dirname, `./env/.env`),
   });
 
   if (result.error) {
