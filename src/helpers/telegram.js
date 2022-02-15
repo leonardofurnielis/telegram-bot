@@ -43,7 +43,7 @@ function MessageBroker(message) {
 }
 
 module.exports = {
-  listen: () => {
+  start: () => {
     try {
       const telegramBot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
       telegramBot.start((ctx) => ctx.reply(`Welcome ${ctx.message.chat.first_name}`));

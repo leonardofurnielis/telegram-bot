@@ -5,7 +5,7 @@
 // An asynchronous function that runs before your app start.
 
 module.exports = async () => {
-  const telegramBot = require('../src/helpers/telegram');
+  const telegram = require('../src/helpers/telegram');
 
-  telegramBot.listen();
+  telegram.start();
 };
