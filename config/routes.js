@@ -14,7 +14,7 @@ const errorHandler = require('node-error-handler');
  * @param {Array} filelist - List of directory.
  * @returns {Array} - The complete list of directory.
  */
- const readRecursiveDirectory = (dir, filelist = []) => {
+const readRecursiveDirectory = (dir, filelist = []) => {
   try {
     const pathDir = path.join(process.cwd(), dir);
     const files = fs.readdirSync(pathDir);
