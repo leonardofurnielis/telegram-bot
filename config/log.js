@@ -27,7 +27,7 @@ log4js.configure({
   },
 });
 
-module.exports = async (name = 'telegram-bot-sentiment') => {
+module.exports = async (name = 'app') => {
   const logger = log4js.getLogger(name);
   logger.level = process.env.LOGGER_LEVEL || 'debug';
 

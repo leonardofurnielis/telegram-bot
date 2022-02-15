@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const controller = require('./liveness-controller');
+const controller = require('./liveness.controller');
 
 module.exports = (middlewares) => {
   const router = express.Router();
