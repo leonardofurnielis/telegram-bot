@@ -8,8 +8,8 @@ const liveness = async (req, res, next) => {
       uptime: Math.floor(process.uptime()),
       version: process.version,
       sys: {
-        heap_total: (memory.heapTotal * 10 ** -6).toFixed(2),
-        heap_used: (memory.heapUsed * 10 ** -6).toFixed(2),
+        heap_total: `${(memory.heapTotal * 10 ** -6).toFixed(2)}mb`,
+        heap_used: `${(memory.heapUsed * 10 ** -6).toFixed(2)}mb`,
       },
     };
 
