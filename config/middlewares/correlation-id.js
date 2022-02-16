@@ -3,7 +3,7 @@
 const uuid = require('uuid');
 
 module.exports = () => (req, res, next) => {
-  const correlationId = 'X-Correlation-ID';
+  const correlationId = 'x-correlation-id';
   if (
     !req.headers[correlationId] ||
     (req.headers[correlationId] && req.headers[correlationId].trim() === '')
