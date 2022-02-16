@@ -22,7 +22,7 @@ function MessageBroker(message) {
       context.sentiment = nluResponse.sentiment.document.label;
 
       context.first_name = message.chat.first_name;
-      console.debug('Sentiment:', nluResponse.sentiment.document.label);
+      console.debug('User sentiment >>>', nluResponse.sentiment.document.label);
 
       fullContext.skills['main skill'].user_defined = context;
       const watsonResponse = await watsonAssistant.message({
@@ -30,8 +30,7 @@ function MessageBroker(message) {
         id: chatId,
         context: fullContext,
       });
-
-      console.debug('Watson Assistant output:', watsonResponse.output.generic);
+      console.debug('Watson Assistant output >>>', watsonResponse.output.generic);
 
       localCache.set(chatId, watsonResponse.context);
 
