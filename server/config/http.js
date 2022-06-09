@@ -4,10 +4,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const compression = require('compression');
-// const passport = require('passport');
+const passport = require('passport');
 const rateLimit = require('express-rate-limit');
-
-const correlationId = require('./middlewares/correlation-id');
+const transactionId = require('express-transaction-id');
 
 module.exports = async (app) => {
   app.set('trust proxy', 1);
@@ -23,8 +22,8 @@ module.exports = async (app) => {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(compression());
-  app.use(correlationId());
+  app.use(transactionId());
   app.use(limiter);
-  // app.use(passport.initialize());
+  app.use(passport.initialize());
   // app.use(passport.session());
 };

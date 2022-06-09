@@ -1,12 +1,13 @@
 'use strict';
 
-const liveness = async (req, res, next) => {
+const health = async (req, res, next) => {
   try {
     const memory = process.memoryUsage();
 
     const healthcheck = {
+      status: 'UP',
       uptime: Math.floor(process.uptime()),
-      version: process.version,
+      node_version: process.version,
       sys: {
         heap_total: `${(memory.heapTotal * 10 ** -6).toFixed(2)}mb`,
         heap_used: `${(memory.heapUsed * 10 ** -6).toFixed(2)}mb`,
@@ -20,5 +21,5 @@ const liveness = async (req, res, next) => {
 };
 
 module.exports = {
-  liveness,
+  health,
 };

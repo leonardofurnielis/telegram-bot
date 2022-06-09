@@ -8,6 +8,7 @@ coverage
 
 # Dependency directories
 node_modules/
+node_modules_linux/
 package-lock.json
 
 # rollup.js default build output

@@ -2,7 +2,7 @@
 
 const http = require('http');
 
-const app = require('./config');
+const app = require('./server');
 
 console.info(`Port: ${process.env.PORT || 3000}`);
 console.info(`NODE_ENV: ${process.env.NODE_ENV || 'local'}`);

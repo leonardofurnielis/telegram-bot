@@ -1,4 +1,4 @@
 apps:
-  - name: 'telegram-bot-sentiment'
+  - name: 'node-app-mongodb'
     script: './app.js'
     exec_mode: 'fork'

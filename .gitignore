@@ -8,6 +8,7 @@ coverage
 
 # Dependency directories
 node_modules/
+node_modules_linux
 
 # rollup.js default build output
 dist/
@@ -17,5 +18,7 @@ dist/
 .vscode/
 
 # Environment
-/config/env/*
-!/config/env/.env_example
+!/.env_example
+.env
+private.pem
+public.pem
