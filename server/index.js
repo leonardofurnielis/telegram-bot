@@ -44,6 +44,6 @@ if (!process.env.NODE_ENV === 'test') {
 }
 
 // Telegram webhook start
-telegram.start()
+telegram.start();
 
 module.exports = app;
