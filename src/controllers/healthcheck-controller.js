@@ -1,6 +1,6 @@
 'use strict';
 
-const health = async (req, res, next) => {
+const server = async (req, res, next) => {
   try {
     const memory = process.memoryUsage();
 
@@ -9,11 +9,12 @@ const health = async (req, res, next) => {
       uptime: Math.floor(process.uptime()),
       node_version: process.version,
       sys: {
-        heap_total: `${(memory.heapTotal * 10 ** -6).toFixed(2)}mb`,
-        heap_used: `${(memory.heapUsed * 10 ** -6).toFixed(2)}mb`,
+        mem_total: `${(memory.heapTotal * 10 ** -6).toFixed(2)}mb`,
+        mem_used: `${(memory.heapUsed * 10 ** -6).toFixed(2)}mb`,
       },
     };
 
+    res.set('cache-control', 'no-cache');
     return res.status(200).json(healthcheck);
   } catch (err) {
     next(err);
@@ -21,5 +22,5 @@ const health = async (req, res, next) => {
 };
 
 module.exports = {
-  health,
+  server,
 };

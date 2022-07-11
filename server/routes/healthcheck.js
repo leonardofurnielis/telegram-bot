@@ -1,5 +1,5 @@
 const express = require('express');
-const controller = require('../../src/controllers/health-controller');
+const controller = require('../../src/controllers/healthcheck-controller');
 
 module.exports = (middlewares) => {
   const router = express.Router();
@@ -8,7 +8,7 @@ module.exports = (middlewares) => {
     middlewares.forEach((middleware) => router.use(middleware));
   }
 
-  router.get('/', controller.health);
+  router.get('/', controller.server);
 
   return router;
 };

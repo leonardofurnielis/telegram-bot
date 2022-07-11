@@ -17,7 +17,7 @@ const securityLoader = require('./config/security');
 const telegram = require('../src/helpers/telegram');
 
 // Import routes dependencies
-const healthRoutes = require('./routes/health');
+const healthcheckRoute = require('./routes/healthcheck');
 
 environmentLoader();
 
@@ -26,7 +26,7 @@ logLoader();
 httpLoader(app);
 
 // Routes and api calls
-app.use('/api/health', healthRoutes());
+app.use('/api/healthcheck', healthcheckRoute());
 
 // 404 handler
 app.use((req, res, next) => {
