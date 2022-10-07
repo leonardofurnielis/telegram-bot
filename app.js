@@ -2,7 +2,7 @@
 
 const http = require('http');
 
-const app = require('./server');
+const app = require('./config');
 
 console.info(`Port: ${process.env.PORT || 3000}`);
 console.info(`NODE_ENV: ${process.env.NODE_ENV || 'local'}`);
@@ -10,8 +10,8 @@ console.info(`Logger Level: ${process.env.LOGGER_LEVEL}`);
 
 const server = http.createServer(app);
 
-server.on('clientError', (err) => {
-  console.error(err);
+server.on('onError', (err) => {
+  throw err;
 });
 
 server.listen(Number(process.env.PORT || 3000), '0.0.0.0', () => {

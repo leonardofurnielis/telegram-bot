@@ -9,9 +9,9 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = () => {
-  const publicKEY = fs.readFileSync(path.join(__dirname, '../../public.pem'));
+  const publicKEY = fs.readFileSync(path.join(__dirname, '../__keys__/jwtRSA256.pub.pem'));
   const opts = {};
-  opts.jwtFromRequest = ExtractJwt.fromHeader('x-api-key');
+  opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
   opts.secretOrKey = publicKEY;
   passport.use(
     new JwtStrategy(opts, async (jwtPayload, done) => {

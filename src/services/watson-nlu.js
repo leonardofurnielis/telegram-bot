@@ -7,7 +7,7 @@ module.exports = {
   analyze: (params) =>
     new Promise((resolve, reject) => {
       const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
-        version: '2020-08-01',
+        version: '2022-04-07',
         authenticator: new IamAuthenticator({
           apikey: process.env.NLU_API_KEY,
         }),

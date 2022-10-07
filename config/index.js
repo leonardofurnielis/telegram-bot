@@ -8,16 +8,16 @@ const errorHandler = require('node-error-handler');
 
 // Import config dependencies
 const app = express();
-const environmentLoader = require('./config/environment');
-const logLoader = require('./config/log');
-const httpLoader = require('./config/http');
-const securityLoader = require('./config/security');
-
-// Import telegram webhook start
-const telegram = require('../src/helpers/telegram');
+const environmentLoader = require('./environment');
+const logLoader = require('./log');
+const httpLoader = require('./http');
+const securityLoader = require('./security');
 
 // Import routes dependencies
-const healthcheckRoute = require('./routes/healthcheck');
+const healthRoute = require('./routes/health');
+
+// Import telegram webhook start
+const telegram = require('../src/services/telegram');
 
 environmentLoader();
 
@@ -26,7 +26,7 @@ logLoader();
 httpLoader(app);
 
 // Routes and api calls
-app.use('/api/healthcheck', healthcheckRoute());
+app.use('/api/health', healthRoute());
 
 // 404 handler
 app.use((req, res, next) => {
