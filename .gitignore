@@ -8,5 +8,5 @@ dist/
 *.log
 *.tmp
 *.lcov
-keys/*.pem
+*.pem
 .env

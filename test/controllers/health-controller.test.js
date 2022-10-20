@@ -12,7 +12,7 @@ describe('GET /api/health', () => {
       });
   });
 
-  test('When called, should have all keys', () => {
+  test('When called, should have properties', () => {
     request(app)
       .get('/api/health')
       .then((response) => {
