@@ -3,38 +3,35 @@
 const { Telegraf } = require('telegraf');
 const NodeCache = require('node-cache');
 const watsonAssistant = require('./watson-assistant');
-const nlu = require('./watson-nlu');
 
 const localCache = new NodeCache();
 
-function MessageBroker(message) {
+function TextMessageBroker(message) {
   return new Promise(async (resolve, reject) => {
     try {
       const chatId = message.chat.id;
 
       const fullContext = localCache.get(chatId) || {
-        skills: { 'main skill': { user_defined: {} } },
+        skills: { 'actions skill': { skill_variables: {} } },
       };
-      const context = fullContext.skills['main skill'].user_defined;
-
-      const nluResponse = await nlu.analyze({ text: message.text });
-
-      context.sentiment = nluResponse.sentiment.document.label;
+      const context = fullContext.skills['actions skill'].skill_variables;
 
       context.first_name = message.chat.first_name;
-      console.debug('User sentiment >>>', nluResponse.sentiment.document.label);
 
-      fullContext.skills['main skill'].user_defined = context;
-      const watsonResponse = await watsonAssistant.message({
+      fullContext.skills['actions skill'].skill_variables = context;
+      const res = await watsonAssistant.message({
         text: message.text,
         id: chatId,
         context: fullContext,
       });
-      console.debug('Watson Assistant output >>>', watsonResponse.output.generic);
+      console.debug('**************************');
+      console.debug('Session_ID ->', res.context.global.session_id);
+      console.debug('Output ->', res.output.generic);
+      console.debug('**************************');
 
-      localCache.set(chatId, watsonResponse.context);
+      localCache.set(chatId, res.context);
 
-      resolve(watsonResponse.output.generic);
+      resolve(res.output.generic);
     } catch (err) {
       reject(err);
     }
@@ -44,12 +41,12 @@ function MessageBroker(message) {
 module.exports = {
   start: () => {
     try {
-      const telegramBot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
-      telegramBot.start((ctx) => ctx.reply(`Welcome ${ctx.message.chat.first_name}`));
-
-      telegramBot.on('text', async (ctx) => {
+      const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
+      bot.start((ctx) => ctx.reply(`Welcome ${ctx.message.chat.first_name}`));
+      
+      bot.on('text', async (ctx) => {
         // Using context shortcut
-        const response = await MessageBroker(ctx.message);
+        const response = await TextMessageBroker(ctx.message);
 
         response.forEach((element) => {
           if (element.response_type === 'text') {
@@ -58,7 +55,7 @@ module.exports = {
         });
       });
 
-      telegramBot.launch();
+      bot.launch();
     } catch (err) {
       console.error(err);
     }

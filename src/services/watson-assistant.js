@@ -7,7 +7,7 @@ module.exports = {
   message: (params) =>
     new Promise((resolve, reject) => {
       const assistant = new AssistantV2({
-        version: '2021-11-27',
+        version: '2021-06-14',
         authenticator: new IamAuthenticator({
           apikey: process.env.ASSISTANT_API_KEY,
         }),
