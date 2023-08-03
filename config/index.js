@@ -4,14 +4,14 @@
 
 // Import dependencies
 const express = require('express');
-const errorHandler = require('node-error-handler');
+const error_handler = require('node-error-handler');
 
 // Import config dependencies
 const app = express();
-const environmentLoader = require('./environment');
-const logLoader = require('./log');
-const httpLoader = require('./http');
-const securityLoader = require('./security');
+const environment_loader = require('./environment');
+const log_loader = require('./log');
+const http_loader = require('./http');
+const security_loader = require('./security');
 
 // Import routes dependencies
 const healthRoute = require('./routes/health');
@@ -19,11 +19,11 @@ const healthRoute = require('./routes/health');
 // Import telegram webhook start
 const telegram = require('../src/services/telegram');
 
-environmentLoader();
+environment_loader();
 
-logLoader();
+log_loader();
 
-httpLoader(app);
+http_loader(app);
 
 // Routes and api calls
 app.use('/api/health', healthRoute());
@@ -37,10 +37,10 @@ app.use((req, res, next) => {
 
 // Error handler
 const debug = process.env.LOGGER_LEVEL.toLowerCase() === 'debug' ? true : false;
-app.use(errorHandler({ debug }));
+app.use(error_handler({ debug }));
 
 if (!process.env.NODE_ENV === 'test') {
-  securityLoader();
+  security_loader();
 }
 
 // Telegram webhook start

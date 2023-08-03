@@ -1,12 +1,12 @@
 'use strict';
 
-const AssistantV2 = require('ibm-watson/assistant/v2');
+const assistant_V2 = require('ibm-watson/assistant/v2');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
 module.exports = {
   message: (params) =>
     new Promise((resolve, reject) => {
-      const assistant = new AssistantV2({
+      const assistant = new assistant_V2({
         version: '2021-06-14',
         authenticator: new IamAuthenticator({
           apikey: process.env.ASSISTANT_API_KEY,

@@ -1,35 +1,35 @@
 'use strict';
 
 const { Telegraf } = require('telegraf');
-const NodeCache = require('node-cache');
-const watsonAssistant = require('./watson-assistant');
+const node_cache = require('node-cache');
+const watson_assistant = require('./watson_assistant');
 
-const localCache = new NodeCache();
+const local_cache = new node_cache();
 
-function TextMessageBroker(message) {
+function text_message_broker(message) {
   return new Promise(async (resolve, reject) => {
     try {
-      const chatId = message.chat.id;
+      const chat_id = message.chat.id;
 
-      const fullContext = localCache.get(chatId) || {
+      const full_context = local_cache.get(chat_id) || {
         skills: { 'actions skill': { skill_variables: {} } },
       };
-      const context = fullContext.skills['actions skill'].skill_variables;
+      const context = full_context.skills['actions skill'].skill_variables;
 
       context.first_name = message.chat.first_name;
 
-      fullContext.skills['actions skill'].skill_variables = context;
-      const res = await watsonAssistant.message({
+      full_context.skills['actions skill'].skill_variables = context;
+      const res = await watson_assistant.message({
         text: message.text,
-        id: chatId,
-        context: fullContext,
+        id: chat_id,
+        context: full_context,
       });
       console.debug('**************************');
-      console.debug('Session_ID ->', res.context.global.session_id);
-      console.debug('Output ->', res.output.generic);
+      console.debug('session_ID ->', res.context.global.session_id);
+      console.debug('output ->', res.output.generic);
       console.debug('**************************');
 
-      localCache.set(chatId, res.context);
+      local_cache.set(chat_id, res.context);
 
       resolve(res.output.generic);
     } catch (err) {
@@ -42,11 +42,11 @@ module.exports = {
   start: () => {
     try {
       const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
-      bot.start((ctx) => ctx.reply(`Welcome ${ctx.message.chat.first_name}`));
+      bot.start((ctx) => ctx.reply(`Bem-vindo ${ctx.message.chat.first_name}`));
       
       bot.on('text', async (ctx) => {
         // Using context shortcut
-        const response = await TextMessageBroker(ctx.message);
+        const response = await text_message_broker(ctx.message);
 
         response.forEach((element) => {
           if (element.response_type === 'text') {
