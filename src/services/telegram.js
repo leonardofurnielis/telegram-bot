@@ -43,7 +43,7 @@ module.exports = {
     try {
       const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
       bot.start((ctx) => ctx.reply(`Bem-vindo ${ctx.message.chat.first_name}`));
-      
+
       bot.on('text', async (ctx) => {
         // Using context shortcut
         const response = await text_message_broker(ctx.message);
