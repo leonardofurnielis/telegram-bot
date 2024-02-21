@@ -17,7 +17,7 @@ const security_loader = require('./security');
 const healthRoute = require('./routes/health');
 
 // Import telegram webhook start
-const telegram = require('../src/services/telegram');
+const telegram = require('../services/telegram');
 
 environment_loader();
 

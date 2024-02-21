@@ -1,5 +1,3 @@
-# telegram-bot-sentiment
-
 ![workflow](https://github.com/leonardofurnielis/telegram-bot-sentiment/actions/workflows/build-test.yml/badge.svg)
 [![codecov](https://codecov.io/gh/leonardofurnielis/telegram-bot-sentiment/branch/master/graph/badge.svg?token=deQmKPNEIY)](https://codecov.io/gh/leonardofurnielis/telegram-bot-sentiment)
 
