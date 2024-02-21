@@ -19,11 +19,25 @@ function text_message_broker(message) {
       context.first_name = message.chat.first_name;
 
       full_context.skills['actions skill'].skill_variables = context;
-      const res = await watson_assistant.message({
+      let res = await watson_assistant.message({
         text: message.text,
         id: chat_id,
         context: full_context,
       });
+
+
+      if(res.context.global.system.skip_user_input && res.context.global.system.skip_user_input === true) {
+        const previous_output = res.output.generic;
+        console.debug('skip_user_input -> true');
+        res = await watson_assistant.message({
+          id: chat_id,
+          context: res.context,
+        });
+        console.debug('Extension called');
+
+        res.output.generic = previous_output.concat(res.output.generic);
+      }
+
       console.debug('**************************');
       console.debug('session_ID ->', res.context.global.session_id);
       console.debug('output ->', res.output.generic);
