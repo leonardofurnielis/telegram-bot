@@ -24,5 +24,5 @@ server.listen(Number(process.env.PORT || 3000), '0.0.0.0', () => {
   //     process.env.PORT || 3000
   //   }/docs`
   // );
-  console.info('To shut down, press <CTRL> + C at any time.');
+  console.info('To shut down, press <CTRL> + C at any time');
 });

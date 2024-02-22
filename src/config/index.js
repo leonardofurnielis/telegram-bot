@@ -12,9 +12,7 @@ const environment_loader = require('./environment');
 const log_loader = require('./log');
 const http_loader = require('./http');
 const security_loader = require('./security');
-
-// Import routes dependencies
-const healthRoute = require('./routes/health');
+const route_loader = require('./route');
 
 // Import telegram webhook start
 const telegram = require('../services/telegram');
@@ -25,8 +23,7 @@ log_loader();
 
 http_loader(app);
 
-// Routes and api calls
-app.use('/api/health', healthRoute());
+app.use('/api', route_loader());
 
 // 404 handler
 app.use((req, res, next) => {
