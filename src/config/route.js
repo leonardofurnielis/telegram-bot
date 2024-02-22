@@ -110,7 +110,7 @@ function generate_route_mapping(dir, filelist) {
       }
     });
 
-    check_for_duplicate_routes(route_mapping);
+    check_for_duplicate_route(route_mapping);
 
     return route_mapping;
   } catch (err) {
@@ -124,7 +124,7 @@ function generate_route_mapping(dir, filelist) {
  * @param {Array<Object>} route_mapping - The route mapping object containing route information.
  * @throws {Error} Throws an error if duplicate routes are found.
  */
-function check_for_duplicate_routes(route_mapping) {
+function check_for_duplicate_route(route_mapping) {
   const duplicate_routes = [];
 
   // Extracting route values from the route mapping object
