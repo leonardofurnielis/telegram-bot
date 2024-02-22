@@ -33,15 +33,14 @@ function text_message_broker(message) {
           id: chat_id,
           context: res.context,
         });
-        console.debug('Extension called');
+        console.debug('extension called -> OK');
 
         res.output.generic = previous_output.concat(res.output.generic);
       }
 
-      console.debug('**************************');
-      console.debug('session_ID ->', res.context.global.session_id);
-      console.debug('output ->', res.output.generic);
-      console.debug('**************************');
+      console.debug('------------------------------');
+      console.debug('assistant session_id ->', res.context.global.session_id);
+      console.debug('assistant output ->', res.output.generic);
 
       local_cache.set(chat_id, res.context);
 
@@ -59,7 +58,10 @@ module.exports = {
       bot.start((ctx) => ctx.reply(`Bem-vindo ${ctx.message.chat.first_name}`));
 
       bot.on('text', async (ctx) => {
-        // Using context shortcut
+        console.debug('******************************');
+        console.debug('------------------------------');
+        console.debug('chat id ->', ctx.message.chat.id);
+        
         const response = await text_message_broker(ctx.message);
 
         response.forEach((element) => {
