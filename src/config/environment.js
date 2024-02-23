@@ -9,8 +9,11 @@ module.exports = async () => {
   });
 
   if (result.error) {
-    console.debug(
-      'Failed to load environment variables file. Please check that the /.env file exists at the project root'
+    console.warn(
+      `\x1b[33m [${new Date().toISOString()}] [WARN] app - Failed to load environment variables from file. Please check that the /.env file exists at the project root`
+    );
+    console.warn(
+      `\x1b[33m [${new Date().toISOString()}] [WARN] app - Either ensure that environment variables have been loaded previously, to prevent error in the application`
     );
   }
 };

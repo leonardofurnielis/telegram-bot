@@ -37,6 +37,12 @@ if (!process.env.NODE_ENV === 'test') {
 }
 
 // Telegram webhook start
-telegram.start();
+if (process.env.TELEGRAM_BOT_TOKEN) {
+  telegram.start();
+} else {
+  console.error(
+    '`TELEGRAM_BOT_TOKEN` is required. Please check that environment variables was loaded'
+  );
+}
 
 module.exports = app;
