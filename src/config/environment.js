@@ -10,7 +10,7 @@ module.exports = async () => {
 
   if (result.error) {
     console.debug(
-      'Failed to load environment variables file. Please check that the /env/.env file exists at the project root.'
+      'Failed to load environment variables file. Please check that the /env/.env file exists at the project root'
     );
   }
 };

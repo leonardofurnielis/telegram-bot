@@ -1,6 +1,6 @@
 'use strict';
 
-const server = async (req, res, next) => {
+const app_liveness = async (req, res, next) => {
   try {
     const response = {
       status: 'UP',
@@ -15,5 +15,5 @@ const server = async (req, res, next) => {
 };
 
 module.exports = {
-  server,
+  app_liveness,
 };

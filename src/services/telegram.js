@@ -54,7 +54,7 @@ function text_message_broker(message) {
         res.output.generic = previous_output.concat(res.output.generic);
       }
 
-      console.debug('------------------------------');
+      console.debug('--------------------------------------------------');
       console.debug('assistant session_id ->', res.context.global.session_id);
       console.debug('assistant output ->', res.output.generic);
 
@@ -76,17 +76,16 @@ module.exports = {
       bot.start((ctx) => ctx.reply(`Bem-vindo ${ctx.message.chat.first_name}`));
 
       bot.on('text', async (ctx) => {
-        console.debug('******************************');
-        console.debug('------------------------------');
+        console.debug('**************************************************');
         console.debug('chat id ->', ctx.message.chat.id);
 
         const response = await text_message_broker(ctx.message);
 
-        response.forEach((element) => {
-          if (element.response_type === 'text') {
-            ctx.reply(element.text);
+        for (let i = 0; i < response.length; i++) {
+          if (response[i].response_type === 'text') {
+            await ctx.reply(response[i].text);
           }
-        });
+        }
       });
 
       bot.launch();

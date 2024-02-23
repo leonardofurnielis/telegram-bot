@@ -8,7 +8,7 @@ module.exports = (middlewares) => {
     middlewares.forEach((middleware) => router.use(middleware));
   }
 
-  router.get('/', controller.server);
+  router.get('/', controller.app_liveness);
 
   return router;
 };

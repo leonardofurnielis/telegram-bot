@@ -11,7 +11,7 @@ module.exports = () => {
   const routes_mapping = generate_route_mapping('routes', routes_filelist);
 
   console.debug('Loading app routes');
-  console.debug('------------------------------');
+  console.debug('--------------------------------------------------');
   routes_mapping.forEach((i) => {
     const rf = require(i.require_path);
 
@@ -19,7 +19,7 @@ module.exports = () => {
     router.use(i.route, rf());
   });
 
-  console.debug('------------------------------');
+  console.debug('--------------------------------------------------');
   console.debug('App routes loaded successfully\n');
 
   return router;
