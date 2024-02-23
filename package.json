@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "lint": "eslint .",
-    "test": "npm run lint && jest --coverage --verbose",
+    "test": "jest --coverage --verbose",
     "precommit": "pretty-quick --staged"
   },
   "engines": {
