@@ -1,7 +1,7 @@
 'use strict';
 
 const request = require('supertest');
-const app = require('../../config');
+const app = require('../../../');
 
 describe('GET /api/liveness', () => {
   test('It should return 200', () => {

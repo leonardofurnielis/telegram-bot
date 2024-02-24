@@ -1,5 +1,5 @@
 const express = require('express');
-const controller = require('../../controllers/liveness-controller');
+const controller = require('../../api/controllers/liveness-controller');
 
 module.exports = (middlewares) => {
   const router = express.Router();

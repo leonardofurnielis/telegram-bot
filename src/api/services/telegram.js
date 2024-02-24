@@ -2,7 +2,7 @@
 
 const { Telegraf } = require('telegraf');
 const node_cache = require('node-cache');
-const watson_assistant = require('./watson_assistant');
+const watson_assistant = require('./watson-assistant');
 
 const local_cache = new node_cache();
 
