@@ -27,6 +27,6 @@ To run this code using Docker container execute the following commands into proj
 ```bash
 ./generate-rsa-key.sh
 
-docker build -t node-cloudant .
-docker run -p 8080:3000 -d node-cloudant
+docker build -t telegram-bot .
+docker run -p 8080:3000 -d telegram-bot
 ```
